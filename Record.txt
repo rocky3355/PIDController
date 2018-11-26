@@ -1,0 +1,5 @@
+LD_PRELOAD=/home/qxw0266/PycharmProjects/apitrace/build/wrappers/glxtrace.so ./term2_sim.x86_64 
+/home/qxw0266/PycharmProjects/apitrace/build/apitrace dump-images -o - term2_sim.x86_64.trace | ffmpeg -f image2pipe -vcodec ppm -i pipe: -vcodec mpeg4 -y output.mp4
+ffmpeg -i output.mp4  -vcodec copy -acodec copy -ss 00:07:54 -t 00:08:42 output1.mp4
+ffmpeg -i output1.mp4 -filter:v "setpts=1.5*PTS" output2.mp4
+
